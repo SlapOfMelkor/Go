@@ -15,7 +15,7 @@ func main() {
 	tarihF := flag.Bool("date", false, "Tarih bilgileri.\n Ornegin: -site 1 ya da 2 -date\n")
 	icerikF := flag.Bool("desc", false, "Aciklamayi goster.\n Ornegin: -site 1 ya da 2 -desc\n")
 	flag.Parse()
-
+	//
 	if *secim == "" {
 		log.Fatal("Parametre eksik. -h ile mevcut secenekleri gorebilirsiniz")
 	}
