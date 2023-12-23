@@ -5,7 +5,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
+	"unicode"
 )
 
 func main() {
@@ -37,8 +39,16 @@ func main() {
 
 	index := strings.Index(string(body), aramaMetni)
 	if index != -1 && index+len(aramaMetni)+6 < len(body) {
-		substring := body[index+len(aramaMetni) : index+len(aramaMetni)+6]
-		fmt.Printf("Girilen Sitenin Wordpress Surumu= %s\n", substring)
+		substring := string(body[index+len(aramaMetni) : index+len(aramaMetni)+6])
+		var numericString string
+		for _, char := range substring {
+			if unicode.IsDigit(char) {
+				numericString += string(char)
+			}
+		}
+		lastint, _ := strconv.Atoi(numericString)
+
+		fmt.Printf("Girilen Sitenin Wordpress Surumu= %d\n", lastint)
 	} else {
 		fmt.Printf("Bu sitenin Wordpress Surumu Bulunamadi")
 	}
