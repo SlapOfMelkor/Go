@@ -1,0 +1,4 @@
+CREATE TABLE tasks IF NOT EXISTS (
+    id SERIAL PRIMARY KEY,
+    title TEXT
+);
